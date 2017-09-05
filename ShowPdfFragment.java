@@ -18,6 +18,21 @@ import es.voghdev.pdfviewpager.library.PDFViewPager;
 import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
 
 
+/**
+ Installation
+
+ Add this line in your app/build.gradle
+ compile 'es.voghdev.pdfviewpager:library:1.0.2'
+ 
+ Add INTERNET, READ_EXTERNAL_STORAGE and WRITE_EXTERNAL_STORAGE permissions on your AndroidManifest.xml
+ 
+ declare it on your XML layout
+ <es.voghdev.pdfviewpager.library.PDFViewPager
+ android:id="@+id/pdfViewPager"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"/>
+
+ */
 public class ShowPdfFragment extends Fragment implements DownloadHelper.DownloadFileListener {
 
 
