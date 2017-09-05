@@ -16,20 +16,17 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+
 /**
- * Created by David vardi on 7/14/2016.
+ * David Vardi  === Update 05/09/2017 
  */
-public class DownloadHelper {
+class DownloadHelper {
 
     private static final String TAG = DownloadHelper.class.getSimpleName();
-
-    private String mUrl;
 
     private ProgressDialog mDialog;
 
     private Context mContext;
-
-    public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
 
     private String folderName;
 
@@ -37,7 +34,7 @@ public class DownloadHelper {
 
     private DownloadFileListener mListener;
 
-    public DownloadHelper(Context context, DownloadFileListener listener) {
+    DownloadHelper(Context context, DownloadFileListener listener) {
 
         this.mContext = context;
 
@@ -46,7 +43,11 @@ public class DownloadHelper {
     }
 
 
-    public void downloadFile(String url, String folderName) {
+    /**
+     * @param url        The link of the file
+     * @param folderName If is null the file will be saved on cache folder
+     */
+    void downloadFile(String url, String folderName) {
 
         this.folderName = folderName;
 
@@ -55,7 +56,7 @@ public class DownloadHelper {
     }
 
 
-    class DownloadFileFromURL extends AsyncTask<String, String, String> {
+    private class DownloadFileFromURL extends AsyncTask<String, String, String> {
 
         protected void onPreExecute() {
 
@@ -70,13 +71,24 @@ public class DownloadHelper {
 
             int count;
 
+            File folder;
+
             try {
 
                 URL url = new URL(params[0]);
 
-                File folder = new File(Environment.getExternalStorageDirectory().toString(), folderName);
+                if (folderName != null) {
 
-                folder.mkdir();
+                    folder = new File(Environment.getExternalStorageDirectory().toString(), folderName);
+
+                    if (!folder.exists()) {
+
+                        folder.mkdirs();
+                    }
+                } else {
+
+                    folder = mContext.getCacheDir();
+                }
 
                 mFile = new File(folder, url.getPath().substring(url.getPath().lastIndexOf("/")));
 
@@ -163,9 +175,9 @@ public class DownloadHelper {
 
     }
 
-    public interface DownloadFileListener {
+    interface DownloadFileListener {
 
-        void onPostExecute(File url);
+        void onPostExecute(File file);
     }
 
 }
