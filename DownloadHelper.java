@@ -1,21 +1,20 @@
-package com.il.tikkun.utils;
+package david.vardi.com.exifinformationdemo;
 
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.os.Environment;
-import android.util.Log;
 
-import org.acra.ACRA;
-import org.acra.sender.ReportSenderException;
+        import android.app.ProgressDialog;
+        import android.content.Context;
+        import android.os.AsyncTask;
+        import android.os.Environment;
+        import android.util.Log;
 
-import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.net.URLConnection;
+
+        import java.io.BufferedInputStream;
+        import java.io.File;
+        import java.io.FileOutputStream;
+        import java.io.InputStream;
+        import java.io.OutputStream;
+        import java.net.URL;
+        import java.net.URLConnection;
 
 /**
  * Created by David vardi on 7/14/2016.
@@ -114,7 +113,6 @@ public class DownloadHelper {
 
                 Log.e(TAG, "Error: " + e.getMessage());
 
-                ACRA.getErrorReporter().handleSilentException(new ReportSenderException("Log Error"));
 
             }
 
