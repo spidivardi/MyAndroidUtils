@@ -1,20 +1,20 @@
 package david.vardi.com.exifinformationdemo;
 
 
-        import android.app.ProgressDialog;
-        import android.content.Context;
-        import android.os.AsyncTask;
-        import android.os.Environment;
-        import android.util.Log;
+import android.app.ProgressDialog;
+import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Environment;
+import android.util.Log;
 
 
-        import java.io.BufferedInputStream;
-        import java.io.File;
-        import java.io.FileOutputStream;
-        import java.io.InputStream;
-        import java.io.OutputStream;
-        import java.net.URL;
-        import java.net.URLConnection;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLConnection;
 
 /**
  * Created by David vardi on 7/14/2016.
@@ -37,7 +37,7 @@ public class DownloadHelper {
 
     private DownloadFileListener mListener;
 
-    public DownloadHelper(Context context,DownloadFileListener listener) {
+    public DownloadHelper(Context context, DownloadFileListener listener) {
 
         this.mContext = context;
 
@@ -134,7 +134,6 @@ public class DownloadHelper {
             mListener.onPostExecute(mFile);
 
 
-
         }
 
     }
@@ -164,7 +163,7 @@ public class DownloadHelper {
 
     }
 
-    public interface DownloadFileListener{
+    public interface DownloadFileListener {
 
         void onPostExecute(File url);
     }
